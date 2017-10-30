@@ -1,0 +1,21 @@
+<mat-card>
+  <form (ngSubmit)="login(auth.value)" [formGroup]="auth">
+    <h2>Login</h2>
+    <div fxLayout='column' class="form-group">
+      <mat-input-container>
+        <input matInput type="email" placeholder="Email" #email formControlName="email" >
+        <mat-hint align="end" *ngIf="auth.controls['email'].errors && auth.controls['email'].touched">
+          You can't leave this empty.
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container>
+        <input matInput type="password" placeholder="Password" #name formControlName="password">
+        <mat-hint align="end" *ngIf="auth.controls['password'].hasError('required') && auth.controls['password'].touched">
+          You can't leave this empty.
+        </mat-hint>
+      </mat-input-container>
+    </div>
+    <div>{{message}}</div>
+    <button mat-button [disabled]="auth.invalid">Login</button>
+  </form>
+</mat-card>

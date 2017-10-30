@@ -1,0 +1,43 @@
+<mat-card>
+  <form (ngSubmit)="submit(product.value)" [formGroup]="product">
+    <h2>Create new product</h2>
+    <div fxLayout='column' fxLayoutAlign='center' class="form-group">
+
+      <mat-input-container>
+        <input matInput type="text" placeholder="title" #title formControlName="title" >
+        <mat-hint align="end" *ngIf="product.controls['title'].errors && product.controls['title'].touched">
+          You can't leave this empty.
+        </mat-hint>
+      </mat-input-container>
+
+      <mat-input-container>
+        <input matInput type="text" placeholder="description" #description formControlName="description" >
+        <mat-hint align="end" *ngIf="product.controls['description'].errors && product.controls['description'].touched">
+          You can't leave this empty.
+        </mat-hint>
+      </mat-input-container>
+
+      <mat-input-container>
+        <input matInput type="number" placeholder="price" #price formControlName="price" >
+        <mat-hint align="end" *ngIf="product.controls['price'].errors && product.controls['price'].touched">
+          You can't leave this empty.
+        </mat-hint>
+      </mat-input-container>
+
+      <mat-input-container>
+        <input matInput type="text" placeholder="photo" #photo formControlName="photo" >
+        <mat-hint align="end" *ngIf="product.controls['photo'].errors && product.controls['photo'].touched">
+          You can't leave this empty.
+        </mat-hint>
+      </mat-input-container>
+
+      <mat-select placeholder="type" formControlName="type">
+        <mat-option *ngFor="let type of types" [value]="type.value">
+          {{type.value}}
+        </mat-option>
+      </mat-select>
+
+    </div>
+    <button mat-button [disabled]="product.invalid">Ok</button>
+  </form>
+</mat-card>

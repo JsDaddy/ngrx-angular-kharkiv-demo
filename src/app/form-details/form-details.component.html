@@ -1,0 +1,35 @@
+<mat-card>
+  <form (ngSubmit)="createOrder($event)" [formGroup]="userForm">
+    <h2>Enter your details</h2>
+    <div fxLayout='row' fxLayoutAlign="space-between" class="form-group">
+      <mat-input-container fxFlex="48">
+        <input matInput placeholder="Name" #name formControlName="name">
+        <mat-hint align="end" *ngIf="userForm.controls['name'].hasError('required') && userForm.controls['name'].touched">
+          You can't leave this empty.
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container fxFlex="48">
+        <input matInput type="email" placeholder="Email" #email formControlName="email" >
+        <mat-hint align="end" *ngIf="userForm.controls['email'].errors && userForm.controls['email'].touched">
+          You can't leave this empty.
+        </mat-hint>
+      </mat-input-container>
+    </div>
+
+    <div fxLayout='row' fxLayoutAlign="space-between" class="form-group">
+      <mat-input-container fxFlex="48">
+        <input matInput placeholder="Address" #address formControlName="address">
+        <mat-hint align="end" *ngIf="userForm.controls['address'].errors && userForm.controls['address'].touched">
+          You can't leave this empty.
+        </mat-hint>
+      </mat-input-container>
+      <mat-input-container fxFlex="48">
+        <input matInput type="number" placeholder="Phone" #phone formControlName="phone">
+        <mat-hint align="end" *ngIf="userForm.controls['phone'].errors && userForm.controls['phone'].touched">
+          You can't leave this empty.
+        </mat-hint>
+      </mat-input-container>
+    </div>
+    <button mat-button [disabled]="userForm.invalid">Ok</button>
+  </form>
+</mat-card>
