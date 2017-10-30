@@ -1,6 +1,13 @@
 # NgrxDemo
 [Slides](https://slides.com/denyslymarenko/deck)
 
+[Demo](http://limarenkodenis.github.io/ngrx-demo)
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
+
+## Environment
+Create src/environments/environment.ts file with your firebase config
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
 
 ## Development server
