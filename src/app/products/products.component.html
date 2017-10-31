@@ -8,7 +8,7 @@
         <mat-grid-tile-header>{{product.title}}</mat-grid-tile-header>
         <img class="img"  mat-card-image [src]="product.photo">
         <mat-grid-tile-footer  fxLayout="row" fxLayoutAlign="space-between center">
-          <button mat-raised-button color="accent" (click)="addProduct(product)">BUY</button>
+          <button class="buy-btn" mat-raised-button color="accent" (click)="addProduct(product)">BUY</button>
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>

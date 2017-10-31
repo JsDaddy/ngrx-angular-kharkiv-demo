@@ -1,3 +1,7 @@
 .img {
   width: 80%
 }
+
+.buy-btn:hover {
+  background-color: red;
+}
