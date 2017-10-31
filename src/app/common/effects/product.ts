@@ -30,7 +30,7 @@ export class ProductEffects {
   @Effect()
   public addProduct$: Observable<Action> = this.actions$
     .ofType(ProductActions.ADD_PRODUCT)
-    .map((action: any) => action.payload)
+    .map((action: ProductActions.AddProduct) => action.payload)
     .switchMap((product: Product) => this._productService.addProduct(product))
     .map((product: Product) => new ProductActions.AddProductSuccess(product))
     .do(() => this._matSnackBar.open('Product has been added', '', {duration: 3000}));

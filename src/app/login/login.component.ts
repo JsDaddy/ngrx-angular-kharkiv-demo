@@ -24,9 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this._store.select('auth').subscribe((data: any) => {
-      this.message = data.message;
-    });
+    this._store.select('auth').subscribe((data: Error) => this.message = data.message);
   }
 
   public login(user: User): void {

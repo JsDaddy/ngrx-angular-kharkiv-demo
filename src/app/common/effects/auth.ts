@@ -16,7 +16,7 @@ export class AuthEffects {
   @Effect()
   public login$: Observable<Action> = this.actions$
     .ofType(AuthActions.LOGIN)
-    .map((action: any) => action.payload)
+    .map((action: AuthActions.Login) => action.payload)
     .switchMap((data: User) => this._loginService.login(data))
     .map((user: User) => new AuthActions.LoginSuccess(user))
     .do(() => this._router.navigate(['/']))
@@ -29,9 +29,8 @@ export class AuthEffects {
     @Effect()
     public logout$: Observable<Action> = this.actions$
       .ofType(AuthActions.LOGOUT)
-      .map((action: any) => action.payload)
       .switchMap(() => this._loginService.logout())
-      .map((user: any) => new AuthActions.LogoutSuccess())
+      .map(() => new AuthActions.LogoutSuccess())
       .do(() => this._router.navigate(['/']))
       .catch((err: Error) => {
         // tslint:disable-next-line

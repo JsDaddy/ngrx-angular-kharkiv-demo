@@ -8,7 +8,7 @@ const initialState: UserForm = {
   address: ''
 };
 
-export function formReducer(state: UserForm = initialState, action: any): UserForm {
+export function formReducer(state: UserForm = initialState, action: FormActions.Actions): UserForm {
   switch (action.type) {
 
     case FormActions.UPDATE_FORM: {

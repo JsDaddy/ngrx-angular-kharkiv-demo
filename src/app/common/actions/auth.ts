@@ -1,45 +1,38 @@
+/* tslint:disable */
 import { Action } from '@ngrx/store';
 
-export const LOGIN: string = '[Login] Login ..';
-export const LOGIN_SUCCESS: string = '[Login] login Success';
-export const LOGIN_FAIL: string = '[Login] login Fail';
-export const LOGOUT: string = '[Logout] Logout ..';
-export const LOGOUT_SUCCESS: string = '[Login] Logout Success';
-export const LOGIOUT_FAIL: string = '[Login] Logout Fail';
+export const LOGIN = '[Auth] Login ..';
+export const LOGIN_SUCCESS = '[Auth] Login Success';
+export const LOGIN_FAIL = '[Auth] login Fail';
+export const LOGOUT = '[Auth] Logout ..';
+export const LOGOUT_SUCCESS = '[Auth] Logout Success';
+export const LOGOUT_FAIL = '[Auth] Logout Fail';
 
 export class Login implements Action {
-  public readonly type: string = LOGIN;
+  public readonly type = LOGIN;
   public constructor(public payload: User) { }
 }
 
-// tslint:disable-next-line
 export class LoginSuccess implements Action {
-  public readonly type: string = LOGIN_SUCCESS;
+  public readonly type = LOGIN_SUCCESS;
   public constructor(public payload: User) { }
 }
 
-// tslint:disable-next-line
 export class LoginFail implements Action {
-  public readonly type: string = LOGIN_FAIL;
+  public readonly type = LOGIN_FAIL;
   public constructor(public payload: Error) { }
 }
 
-// tslint:disable-next-line
 export class Logout implements Action {
-  public readonly type: string = LOGOUT;
-  // public constructor() { }
+  public readonly type = LOGOUT;
 }
 
-// tslint:disable-next-line
 export class LogoutSuccess implements Action {
-  public readonly type: string = LOGOUT_SUCCESS;
-  public constructor() { }
+  public readonly type = LOGOUT_SUCCESS;
 }
 
-// tslint:disable-next-line
 export class LogoutFail implements Action {
-  public readonly type: string = LOGIOUT_FAIL;
-  public constructor() { }
+  public readonly type = LOGOUT_FAIL;
 }
 
 export type Actions

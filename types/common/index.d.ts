@@ -16,7 +16,7 @@ type User = {
 type AppState = {
   product: Product[],
   cart: Product[],
-  auth: User | boolean,
+  auth: User | boolean | Error,
   form: any
 }
 

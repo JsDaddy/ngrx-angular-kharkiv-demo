@@ -3,7 +3,7 @@ import { Action, ActionReducer } from '@ngrx/store';
 
 const initialState: Product[] = [];
 
-export function cartReducer(products: Product[] = initialState, action: any): Product[] {
+export function cartReducer(products: Product[] = initialState, action: CartActions.Actions): Product[] {
   switch (action.type) {
 
     case CartActions.ADD_TO_CART: {
@@ -13,7 +13,7 @@ export function cartReducer(products: Product[] = initialState, action: any): Pr
         products.splice(itemIndex, 1, updatedItem);
         return [...products];
       }
-      return [...products, ...{...action.payload, amount: 1}];
+      return [...products, {...action.payload, amount: 1}];
     }
 
     case CartActions.DELETE_ITEM: {

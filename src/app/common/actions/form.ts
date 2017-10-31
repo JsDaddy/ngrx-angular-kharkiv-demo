@@ -1,16 +1,15 @@
+/* tslint:disable */
 import { Action } from '@ngrx/store';
 
-export const CLEAR_FORM: string = '[Form] Clear form';
-export const UPDATE_FORM: string = '[Form] Update form';
+export const CLEAR_FORM = '[Form] Clear form';
+export const UPDATE_FORM = '[Form] Update form';
 
 export class ClearForm implements Action {
-  public readonly type: string = CLEAR_FORM;
-  public constructor(public payload?: null) { }
+  public readonly type = CLEAR_FORM;
 }
 
-// tslint:disable-next-line
 export class UpdateForm implements Action {
-  public readonly type: string = UPDATE_FORM;
+  public readonly type = UPDATE_FORM;
   public constructor(public payload: UserForm) { }
 }
 
