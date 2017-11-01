@@ -1,5 +1,5 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { createFeatureSelector, createSelector  } from '@ngrx/store';
+import { createFeatureSelector, createSelector, MemoizedSelector  } from '@ngrx/store';
 
 import { productReducer } from './product';
 import { cartReducer } from './cart';
@@ -14,13 +14,13 @@ export const reducers: ActionReducerMap<AppState> = {
   form: formReducer
 };
 
-export const getCartState: any = createFeatureSelector<Product[]>('cart');
+export const getCartState: MemoizedSelector<object, Product[]> = createFeatureSelector<Product[]>('cart');
 
-export const getCartAmount: any = createSelector(
+export const getCartAmount: MemoizedSelector<AppState, number> = createSelector(
   getCartState,
   (items: Product[]) => items.length
 );
-export const getCartTotalSum: any = createSelector(
+export const getCartTotalSum: MemoizedSelector<AppState, number> = createSelector(
   getCartState,
   (items: Product[]) => items.reduce((acc: number, item: Product) => acc + item.amount * item.price, 0)
 );
