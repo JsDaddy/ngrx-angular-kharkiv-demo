@@ -37,10 +37,4 @@ export class CartComponent implements OnInit {
     this._store.dispatch(new CartActions.IncreaseItem(product));
   }
 
-  // private calculateTotal(cart: Product[]): void {
-  //   this.sum = 0;
-  //   cart.forEach((item: Product) => {
-  //    this.sum += item.amount * item.price;
-  //   });
-  // }
 }
