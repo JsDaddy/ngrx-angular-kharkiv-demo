@@ -1,6 +1,7 @@
-<mat-input-container fxLayout='row' fxFlex="100">
+<mat-input-container>
   <input matInput placeholder="Search" #search>
 </mat-input-container>
+<div></div>
 <mat-tab-group>
   <mat-tab *ngFor="let tab of products | async | category" label="{{tab}}">
     <mat-grid-list cols="3">

@@ -6,7 +6,6 @@ import { cartReducer } from './cart';
 import { authReducer } from './auth';
 import { formReducer } from './form';
 
-// tslint:disable-next-line
 export const reducers: ActionReducerMap<AppState> = {
   product: productReducer,
   cart: cartReducer,
