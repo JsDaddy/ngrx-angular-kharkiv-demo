@@ -913,6 +913,8 @@ module.exports = "<mat-card>\n  <form (ngSubmit)=\"createOrder($event)\" [formGr
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_actions_form__ = __webpack_require__("../../../../../src/app/common/actions/form.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/debounceTime.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/distinctUntilChanged.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_take__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/take.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -927,7 +929,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// import 'rxjs/add/operator/take';
+
+
 var FormDetailsComponent = (function () {
     function FormDetailsComponent(_fb, _store) {
         this._fb = _fb;
@@ -941,13 +944,14 @@ var FormDetailsComponent = (function () {
     }
     FormDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._store.select('form').subscribe(function (value) {
+        this._store.select('form').take(1).subscribe(function (value) {
             Object.keys(value).forEach(function (name) {
                 _this.userForm.controls[name].setValue(value[name]);
             });
         });
         this.userForm
             .valueChanges
+            .distinctUntilChanged()
             .debounceTime(1000)
             .subscribe(function (value) { return _this._store.dispatch(new __WEBPACK_IMPORTED_MODULE_3__common_actions_form__["d" /* UpdateForm */](value)); });
     };
