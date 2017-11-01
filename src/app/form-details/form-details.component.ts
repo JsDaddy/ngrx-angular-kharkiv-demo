@@ -3,7 +3,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as FormActions from '../common/actions/form';
 import 'rxjs/add/operator/debounceTime';
-// import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/take';
+
 
 @Component({
   selector: 'app-form-details',
@@ -27,7 +29,7 @@ export class FormDetailsComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this._store.select('form').subscribe((value: UserForm) => {
+    this._store.select('form').take(1).subscribe((value: UserForm) => {
       Object.keys(value).forEach((name: string) => {
         this.userForm.controls[name].setValue(value[name]);
       });
@@ -35,6 +37,7 @@ export class FormDetailsComponent implements OnInit {
 
     this.userForm
       .valueChanges
+      .distinctUntilChanged()
       .debounceTime(1000)
       .subscribe((value: UserForm) => this._store.dispatch(new FormActions.UpdateForm(value)));
   }
