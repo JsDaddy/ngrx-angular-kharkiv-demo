@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
+import * as fromRoot from '../../../common/reducers';
 
 @Component({
   selector: 'app-header',
@@ -12,18 +13,16 @@ import { Store } from '@ngrx/store';
 export class HeaderComponent implements OnInit {
   public user: User;
 
-  public amount: number = 0;
+  public amount$: Observable<number>;
 
   public constructor(
     private _store: Store<AppState>,
     private afAuth: AngularFireAuth,
-  ) {
-  }
+  ) {}
 
   public ngOnInit(): void {
+    this.amount$ = this._store.select(fromRoot.getCartAmount);
     this.afAuth.authState.subscribe((user: User) => this.user = user);
-    // selector
-    this._store.select('cart').subscribe((product: Product[]) => this.amount = product.length);
   }
 
   public logout(): void {

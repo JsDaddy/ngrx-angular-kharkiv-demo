@@ -9,6 +9,7 @@
         <img class="img"  mat-card-image [src]="product.photo">
         <mat-grid-tile-footer  fxLayout="row" fxLayoutAlign="space-between center">
           <button class="buy-btn" mat-raised-button color="accent" (click)="addProduct(product)">BUY</button>
+          <button mat-raised-button color="accent">{{product.price | currency}}</button>
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>

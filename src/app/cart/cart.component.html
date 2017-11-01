@@ -9,6 +9,6 @@
   </mat-card>
   <mat-card  fxLayout="row" fxLayoutAlign="space-between center">
     <button mat-raised-button color="accent" [routerLink]="['/form']">NEXT</button>
-    <button mat-button>Total: {{sum}}</button>
+    <button mat-button>Total: {{sum$ | async}}</button>
   </mat-card>
 </div>

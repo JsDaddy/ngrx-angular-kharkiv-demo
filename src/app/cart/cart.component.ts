@@ -2,6 +2,7 @@ import * as CartActions from './../common/actions/cart';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
+import * as fromRoot from '../common/reducers';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,7 @@ import { Store } from '@ngrx/store';
 
 export class CartComponent implements OnInit {
 
-  public sum: number = 0;
+  public sum$: Observable<number>;
   public cart: Observable<Product[]>;
 
   public constructor(
@@ -21,7 +22,7 @@ export class CartComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this._store.select('cart').subscribe((cart: Product[]) => this.calculateTotal(cart));
+    this.sum$ = this._store.select(fromRoot.getCartTotalSum);
   }
 
   public removeItem(product: Product): void {
@@ -36,10 +37,10 @@ export class CartComponent implements OnInit {
     this._store.dispatch(new CartActions.IncreaseItem(product));
   }
 
-  private calculateTotal(cart: Product[]): void {
-    this.sum = 0;
-    cart.forEach((item: Product) => {
-     this.sum += item.amount * item.price;
-    });
-  }
+  // private calculateTotal(cart: Product[]): void {
+  //   this.sum = 0;
+  //   cart.forEach((item: Product) => {
+  //    this.sum += item.amount * item.price;
+  //   });
+  // }
 }
